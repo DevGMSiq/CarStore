@@ -17,16 +17,12 @@ public class CreateCarServlet extends HttpServlet {
 
         String carName = request.getParameter("car-name");
 
-        System.out.println(carName);
-
         Car car = new Car(carName);
 
-        CarDao carDao = new CarDao();
-
-        carDao.createCar(car);
+        new CarDao().createCar(car);
 
 
-        request.getRequestDispatcher("index.html").forward(request, response);
+        response.sendRedirect("/find-all-cars");
 
     }
 
